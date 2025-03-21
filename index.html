@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YVD Kausthubh - Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #0D1117; color: #E6EDF3; text-align: center; }
+        header { background: #161B22; padding: 20px; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: center; gap: 15px; }
+        nav a { color: #58A6FF; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; }
+        nav a:hover { background: #21262D; }
+        section { display: none; padding: 80px 20px; min-height: 100vh; }
+        #home { display: block; background: url('https://source.unsplash.com/1600x900/?technology') center/cover; color: white; }
+        h1 { font-size: 36px; margin-bottom: 10px; }
+        h2 { font-size: 28px; margin-bottom: 10px; }
+        p { font-size: 18px; max-width: 800px; margin: 0 auto; }
+        .container { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 20px; }
+        .item-box { background: #161B22; padding: 15px; border-radius: 10px; width: 80%; max-width: 600px; transition: 0.3s; }
+        .item-box:hover { transform: scale(1.05); }
+        .item-box h3 { font-size: 22px; color: #58A6FF; }
+        .item-box a { color: #58A6FF; text-decoration: none; font-size: 18px; display: block; margin-top: 10px; }
+        .item-box a:hover { text-decoration: underline; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        .show { opacity: 1; transform: translateY(0); }
+        .profile-pic { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #58A6FF; margin-bottom: 20px; }
+        .typing { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid #E6EDF3; animation: typing 4s steps(40) infinite, blink 0.7s infinite; }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink { 50% { border-color: transparent; } }
+        iframe { width: 100%; max-width: 560px; height: 315px; border: none; margin-top: 10px; border-radius: 10px; }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+            let section = document.getElementById(sectionId);
+            section.style.display = "block";
+            setTimeout(() => section.classList.add("show"), 50);
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" onclick="showSection('home')">Home</a>
+            <a href="#" onclick="showSection('about')">About</a>
+            <a href="#" onclick="showSection('skills')">Skills</a>
+            <a href="#" onclick="showSection('projects')">Projects</a>
+            <a href="#" onclick="showSection('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="fade-in">
+        <img src="https://your-profile-image-link.com" alt="Profile" class="profile-pic">
+        <h1 class="typing">Welcome to My Portfolio</h1>
+        <p>Hello, I am YVD Kausthubh, an ECE student passionate about VLSI, FPGA, IoT, and Embedded Systems.</p>
+    </section>
+
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>As an ECE (Electronics and Communication Engineering) student with a strong passion for robotics and VLSI, I thrive on turning innovative ideas into reality. With hands-on experience in IoT and VLSI projects, I bring a deep understanding of electronics and a dedication to pushing the boundaries of technology. My enthusiasm for VLSI design and specialization in IoT projects reflect my commitment to advancing in these fields, and I continually seek to integrate my knowledge to create impactful, cutting-edge solutions.</p>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <h2>Skills</h2>
+        <div class="container">
+            <div class="item-box"><h3>FPGA & VLSI</h3><p>Experience with Verilog and Vivado.</p></div>
+            <div class="item-box"><h3>IoT & AI</h3><p>Worked on IoT automation and AI projects.</p></div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <h2>Projects</h2>
+        <div class="container">
+    
+            <!-- Chip-setron -->
+            <div class="item-box">
+                <h3>Chip-setron</h3>
+                <p>An innovative VLSI chip for IoT and automation applications, featuring a powerful CPU, multiple GPIOs, ADC, DAC, and PWM outputs.</p>
+                <iframe src="https://www.youtube.com/embed/1PKm5q3TtJw" allowfullscreen></iframe>
+            </div>
+    
+            <!-- Smart Hand-Bag -->
+            <div class="item-box">
+                <h3>Smart Hand-Bag</h3>
+                <p>A security-focused handbag for women with an SOS button that sends location alerts and emergency calls for safety.</p>
+                <iframe src="https://www.youtube.com/embed/uHDtI3Zcg3A" allowfullscreen></iframe>
+            </div>
+    
+            <!-- VLSI-Based Smart Home Automation -->
+            <div class="item-box">
+                <h3>VLSI-Based Smart Home Automation</h3>
+                <p>A smart home system using FPGA & NodeMCU for remote appliance control via Wi-Fi or Bluetooth.</p>
+                <iframe src="https://www.youtube.com/embed/jUsClS8RMpA" allowfullscreen></iframe>
+            </div>
+    
+            <!-- Smart Rover -->
+            <div class="item-box">
+                <h3>Smart Rover</h3>
+                <p>An autonomous robotic car with Bluetooth control and obstacle detection using ultrasonic sensors.</p>
+                <iframe src="https://www.youtube.com/embed/Xq3GSz-DBPk" allowfullscreen></iframe>
+            </div>
+    
+            <!-- Automated Greenhouse System -->
+            <div class="item-box">
+                <h3>Automated Greenhouse System</h3>
+                <p>A smart greenhouse using sensors for soil moisture monitoring and automated watering.</p>
+                <iframe src="https://www.youtube.com/embed/Az9uFwEBvaA" allowfullscreen></iframe>
+            </div>
+    
+            <!-- Wi-Fi Car Using Node MCU -->
+            <div class="item-box">
+                <h3>Wi-Fi Car Using Node MCU</h3>
+                <p>A remote-controlled car using NodeMCU, ESP8266, and Bluetooth, with a custom app for navigation.</p>
+                <iframe src="https://www.youtube.com/embed/k57J4XV7G6w" allowfullscreen></iframe>
+            </div>
+    
+        </div>
+    </section>
+    
+
+    <section id="contact" class="fade-in">
+        <h2>Contact Me</h2>
+        <a href="mailto:kausthubh@example.com">📧 Email: kausthubh@example.com</a>
+        <a href="https://github.com/YVDKausthubh18" target="_blank">
+            🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/kausthubh-yerramsetti-456543258/" target="_blank">🔗 LinkedIn</a>
+    </section>
+
+</body>
+</html>
