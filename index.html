@@ -24,7 +24,7 @@
         .menu-toggle { display: none; font-size: 24px; color: #58A6FF; cursor: pointer; }
         nav { display: flex; gap: 15px; }
         nav a { color: #58A6FF; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; }
-        nav a:hover { background: #21262D; }
+        nav a:hover, nav a.active { background: #21262D; }
 
         /* Mobile Navigation */
         @media (max-width: 768px) {
@@ -34,8 +34,8 @@
         }
 
         /* Sections */
-        section { padding: 80px 20px; min-height: 100vh; }
-        #home { background: url('https://source.unsplash.com/1600x900/?technology') center/cover; color: white; padding-top: 100px; }
+        section { padding: 80px 20px; min-height: 100vh; display: none; }
+        #home { display: block; background: url('https://source.unsplash.com/1600x900/?technology') center/cover; color: white; padding-top: 100px; }
         h1 { font-size: 32px; margin-bottom: 10px; }
         h2 { font-size: 26px; margin-bottom: 10px; }
         p { font-size: 18px; max-width: 800px; margin: 0 auto; padding: 0 20px; }
@@ -55,35 +55,33 @@
 
     </style>
 </head>
-<body>
+<body onload="showSection()">
 
     <!-- Header -->
     <header>
         <h2>Portfolio</h2>
         <span class="menu-toggle" onclick="toggleMenu()">☰</span>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="?page=home">Home</a>
+            <a href="?page=about">About</a>
+            <a href="?page=skills">Skills</a>
+            <a href="?page=projects">Projects</a>
+            <a href="?page=contact">Contact</a>
         </nav>
     </header>
 
-    <!-- Home Section -->
+    <!-- Sections -->
     <section id="home">
         <img src="https://raw.githubusercontent.com/kausthubh-18/YVD-KAUSTHUBH/main/profile.jpeg" alt="Profile" class="profile-pic">
         <h1>Welcome to My Portfolio</h1>
         <p>Hello, I am YVD Kausthubh, an ECE student passionate about VLSI, FPGA, IoT, and Embedded Systems.</p>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
         <p>Passionate about VLSI, robotics, and IoT, I specialize in designing embedded systems and automation solutions.</p>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <h2>Skills</h2>
         <div class="container">
@@ -92,7 +90,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2>Projects</h2>
         <div class="container">
@@ -100,35 +97,17 @@
                 <h3>Chip-setron</h3>
                 <p>VLSI chip for IoT and automation with GPIOs, ADC, DAC, and PWM outputs.</p>
             </div>
-
             <div class="item-box">
                 <h3>Smart Hand-Bag</h3>
                 <p>Security handbag with an SOS button that sends alerts and emergency calls.</p>
             </div>
-
             <div class="item-box">
                 <h3>VLSI-Based Smart Home Automation</h3>
                 <p>Remote-controlled smart home system using FPGA & NodeMCU.</p>
             </div>
-
-            <div class="item-box">
-                <h3>Smart Rover</h3>
-                <p>Bluetooth-controlled autonomous rover with ultrasonic obstacle avoidance.</p>
-            </div>
-
-            <div class="item-box">
-                <h3>Automated Greenhouse System</h3>
-                <p>Smart greenhouse with soil moisture sensors and automated watering.</p>
-            </div>
-
-            <div class="item-box">
-                <h3>Wi-Fi Car Using Node MCU</h3>
-                <p>NodeMCU-based remote car with custom app for navigation.</p>
-            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
         <div class="contact-links">
@@ -137,6 +116,34 @@
             <a href="https://www.linkedin.com/in/kausthubh-yerramsetti-456543258/" target="_blank">🔗 LinkedIn</a>
         </div>
     </section>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            let nav = document.querySelector("nav");
+            nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+        }
+
+        function showSection() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const page = urlParams.get('page') || 'home';
+
+            document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+            document.getElementById(page).style.display = "block";
+
+            document.querySelectorAll("nav a").forEach(link => {
+                link.classList.remove("active");
+                if (link.href.includes(`?page=${page}`)) {
+                    link.classList.add("active");
+                }
+            });
+
+            // Hide menu on mobile after clicking a link
+            if (window.innerWidth <= 768) {
+                document.querySelector("nav").style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
